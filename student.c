@@ -6,13 +6,31 @@
 // define structure "Student"
 typedef struct
 {
+    unsigned short id;
     char * name;
     int nameLength;
     bool gender;
     unsigned short age;
 } Student;
+void studentPrint(Student student);
+int studentInput(Student * pStudent);
+int studentModify(Student * pStudent);
+int studentGetName();
+int studentSetName();
+int studentGetGender();
+// int setGender();
 
-void printStudent(Student student);
+// define structure "Class", a group of students
+typedef struct
+{
+    unsigned short count;
+    Student students[100];
+    char formTeacher[100];
+} Class;
+void classPrint(Class class);
+int classAddStudent(Class * pClass, Student Student);
+int classRemoveStudent(Class * pClass, unsigned short id);
+
 
 int main()
 {
@@ -51,7 +69,7 @@ int main()
     }
 
     for (i = 0; i < 3; i++) {
-       printStudent(student[i]);
+       studentPrint(student[i]);
     }
 
     for (i = 0; i < 3; i++) {
@@ -61,7 +79,7 @@ int main()
     return 0;
 }
 
-void printStudent(Student student)
+void studentPrint(Student student)
 {
     printf("Name:%s\n", student.name);
     if (student.gender == true) {
